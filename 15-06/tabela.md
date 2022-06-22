@@ -2,6 +2,8 @@
 
 tabela mostrando a diferença de tempo de execução entre os métodos de busca Sequencial e Binário
 
+tempo em milissegundos (ms)
+
 | Vetor | Sequencial | Binário |
 |-------|------------|---------|
 |10     |     0      |    0    |  
