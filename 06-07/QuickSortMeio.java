@@ -9,7 +9,7 @@ public class QuickSortMeio {
         Random rand = new Random();
 
         for (int i = 0; i < vet.length; i++) {
-            vet[i] = rand.nextInt(20);
+            vet[i] = rand.nextInt(10);
         }
         
         System.out.println("\n");
@@ -27,21 +27,23 @@ public class QuickSortMeio {
     }
 
     public static int separar(int[] vet, int esq, int dir) {
-        int i = esq + 1;
-        int j = dir;
-        int pivo = vet[esq];
+        int pivo = vet[esq + dir / 2];
+        int i = esq, j = dir;
         while (i <= j) {
-            if (vet[i] <= pivo) {
+            if (vet[i] <= pivo)
                 i++;
-            } else if (vet[j] > pivo) {
+            else if (pivo < vet[j])
                 j--;
-            } else if (i <= j) {
-                trocar(vet, i, j);
+            else {
+                int troca = vet[i];
+                vet[i] = vet[j];
+                vet[j] = troca;
                 i++;
                 j--;
             }
         }
-        trocar(vet, esq, j);
+        vet[esq] = vet[j];
+        vet[j] = pivo;
         return j;
     }
 
