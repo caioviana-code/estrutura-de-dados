@@ -28,23 +28,30 @@ public class QuickSortMeio {
 
     public static int separar(int[] vet, int esq, int dir) {
         int pivo = vet[esq + dir / 2];
-        int i = esq, j = dir;
+        int i = esq;
+        int j = dir;
         while (i <= j) {
-            if (vet[i] <= pivo)
+            if (vet[i] <= vet[pivo]) {
                 i++;
-            else if (pivo < vet[j])
+            } else if (vet[j] >= vet[pivo]) {
                 j--;
-            else {
-                int troca = vet[i];
-                vet[i] = vet[j];
-                vet[j] = troca;
+            } else {
+                trocar(vet, i, j);
                 i++;
                 j--;
             }
         }
-        vet[esq] = vet[j];
-        vet[j] = pivo;
-        return j;
+
+        if (pivo < j) {
+            trocar(vet, j, pivo);
+            pivo = j;
+            return pivo;
+        } else if (pivo > i) {
+            trocar(vet, i, pivo);
+            pivo =  i;
+            return pivo;
+        }
+        
     }
 
     public static void trocar(int[] vet, int i, int j) {
